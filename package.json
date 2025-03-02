@@ -20,6 +20,7 @@
   "homepage": "https://github.com/NeilHundia/CollaBro-webApp#readme",
   "dependencies": {
     "express": "^4.21.2",
+    "mongoose": "^8.11.0",
     "nodemon": "^3.1.9"
   }
 }
