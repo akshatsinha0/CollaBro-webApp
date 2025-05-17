@@ -1,0 +1,71 @@
+/* Navbar Component Styles */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.navbar-logo {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 600;
+  color:black;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  width: 25.5rem;
+}
+
+.search-icon {
+  color: #6b7280;
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  color: #374151;
+  border : none;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.notification-icon {
+  font-size: 1.25rem;
+  color: #374151;
+  cursor: pointer;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.user-icon {
+  font-size: 1.25rem;
+  color: #374151;
+}
+
+.user-name {
+  color: #374151;
+}
+
+.chevron-icon {
+  font-size: 0.875rem;
+  color: #374151;
+} 

@@ -1,0 +1,151 @@
+.domains-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #1a202c, #2d3748);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.domains-content {
+  max-width: 42rem;
+  width: 100%;
+}
+
+.domains-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.domains-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.domains-subtitle {
+  color: #cbd5e0;
+  margin-top: 0.5rem;
+}
+
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .domains-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.domain-item {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s;
+  transform-origin: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  border: none;
+  cursor: pointer;
+}
+
+.domain-item:hover {
+  transform: scale(1.05);
+  background-color: #f9fafb;
+}
+
+.domain-item.selected {
+  border: 2px solid #3b82f6;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.domain-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.domain-icon-wrapper {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebf5ff;
+}
+
+.domain-icon-wrapper.selected {
+  background-color: #3b82f6;
+}
+
+.domain-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #3b82f6;
+}
+
+.domain-icon.selected {
+  color: white;
+}
+
+.domain-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.domain-label.selected {
+  color: #2563eb;
+}
+
+.domains-footer {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #cbd5e0;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: white;
+}
+
+.step-indicator {
+  font-size: 0.875rem;
+  color: #cbd5e0;
+}
+
+.continue-button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.continue-button:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  transform: scale(1.05);
+}
+
+.continue-button.disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
