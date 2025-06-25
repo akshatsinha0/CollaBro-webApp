@@ -523,3 +523,18 @@
   cursor: not-allowed;
   transform: none;
 }
+
+
+.login-form-container {
+  padding-right: 0;  
+}
+.login-info-container {
+  padding-left: 0;   
+  margin-left: -4px; 
+}
+
+
+.login-image {
+  margin-left: -4px; 
+}
+

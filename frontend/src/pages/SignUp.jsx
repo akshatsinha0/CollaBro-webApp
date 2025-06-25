@@ -17,10 +17,12 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+    if (error) setError('')
   }
 
   const handlePhoneChange = (value) => {
@@ -33,7 +35,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords don't match")
+      setError('Passwords do not match')
       return
     }
     setIsLoading(true)
@@ -144,6 +146,12 @@ export default function SignUp() {
                 </button>
               </div>
 
+              {error && (
+                <div className="form-error">
+                  {error}
+                </div>
+              )}
+
               <button
                 type="submit"
                 className={`signup-button ${isLoading ? 'loading' : ''}`}
@@ -206,5 +214,5 @@ export default function SignUp() {
         </div>
       </div>
     </div>
-  )
+)
 }

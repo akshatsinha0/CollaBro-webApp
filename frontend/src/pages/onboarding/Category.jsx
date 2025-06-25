@@ -1,14 +1,24 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { GraduationCap, Briefcase, Rocket } from 'lucide-react';
-import '../../styles/onboarding/Category.css';
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { GraduationCap, Briefcase, Rocket } from 'lucide-react'
+import '../../styles/onboarding/Category.css'
 
-function Category() {
-  const navigate = useNavigate();
+export default function Category() {
+  const navigate = useNavigate()
+  const [selected, setSelected] = useState('')
+
+  useEffect(() => {
+    const saved = localStorage.getItem('onboard_category')
+    if (saved) setSelected(saved)
+  }, [])
 
   const handleContinue = (category) => {
-    navigate('/onboarding/domains');
-  };
+    localStorage.setItem('onboard_category', category)
+    navigate('/onboarding/domains')
+  }
+
+  const optionClasses = (key) =>
+    `category-option${selected === key ? ' selected' : ''}`
 
   return (
     <div className="category-container">
@@ -21,7 +31,7 @@ function Category() {
         <div className="category-options">
           <button
             onClick={() => handleContinue('student')}
-            className="category-option"
+            className={optionClasses('student')}
           >
             <div className="option-content">
               <div className="option-icon-wrapper">
@@ -29,14 +39,16 @@ function Category() {
               </div>
               <div className="option-text">
                 <h3 className="option-title">Student</h3>
-                <p className="option-description">Currently pursuing education</p>
+                <p className="option-description">
+                  Currently pursuing education
+                </p>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => handleContinue('fresher')}
-            className="category-option"
+            className={optionClasses('fresher')}
           >
             <div className="option-content">
               <div className="option-icon-wrapper">
@@ -44,14 +56,16 @@ function Category() {
               </div>
               <div className="option-text">
                 <h3 className="option-title">Fresher</h3>
-                <p className="option-description">Ready to start your career</p>
+                <p className="option-description">
+                  Ready to start your career
+                </p>
               </div>
             </div>
           </button>
 
           <button
             onClick={() => handleContinue('professional')}
-            className="category-option"
+            className={optionClasses('professional')}
           >
             <div className="option-content">
               <div className="option-icon-wrapper">
@@ -59,7 +73,9 @@ function Category() {
               </div>
               <div className="option-text">
                 <h3 className="option-title">Working Professional</h3>
-                <p className="option-description">Experienced in the field</p>
+                <p className="option-description">
+                  Experienced in the field
+                </p>
               </div>
             </div>
           </button>
@@ -76,7 +92,5 @@ function Category() {
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default Category;

@@ -1,80 +1,109 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Code, Palette, Database, Globe, Cpu, LineChart, Smartphone, Camera } from 'lucide-react';
-import '../../styles/onboarding/Domains.css';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import {
+  Globe,
+  Smartphone,
+  Palette,
+  Database,
+  Cpu,
+  LineChart,
+  Code,
+  Camera
+} from 'lucide-react'
+import '../../styles/onboarding/Domains.css'
 
-function Domains() {
-  const navigate = useNavigate();
-  const [selectedDomains, setSelectedDomains] = useState([]);
+export default function Domains() {
+  const navigate = useNavigate()
+  const [selectedDomains, setSelectedDomains] = useState([])
 
   const domains = [
-    { id: 'web', icon: Globe, label: 'Web Development', color: 'blue' },
-    { id: 'mobile', icon: Smartphone, label: 'Mobile Development', color: 'blue' },
-    { id: 'ui', icon: Palette, label: 'UI/UX Design', color: 'blue' },
-    { id: 'backend', icon: Database, label: 'Backend Development', color: 'blue' },
-    { id: 'ai', icon: Cpu, label: 'AI/ML', color: 'blue' },
-    { id: 'data', icon: LineChart, label: 'Data Science', color: 'blue' },
-    { id: 'blockchain', icon: Code, label: 'Blockchain', color: 'blue' },
-    { id: 'ar', icon: Camera, label: 'AR/VR', color: 'blue' },
-  ];
+    { id: 'web',        icon: Globe,      label: 'Web Development' },
+    { id: 'mobile',     icon: Smartphone, label: 'Mobile Development' },
+    { id: 'ui',         icon: Palette,    label: 'UI/UX Design' },
+    { id: 'backend',    icon: Database,   label: 'Backend Development' },
+    { id: 'ai',         icon: Cpu,        label: 'AI/ML' },
+    { id: 'data',       icon: LineChart,  label: 'Data Science' },
+    { id: 'blockchain', icon: Code,       label: 'Blockchain' },
+    { id: 'ar',         icon: Camera,     label: 'AR/VR' }
+  ]
 
-  const toggleDomain = (domainId) => {
-    setSelectedDomains(prev => 
-      prev.includes(domainId)
-        ? prev.filter(id => id !== domainId)
-        : [...prev, domainId]
-    );
-  };
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('onboard_domains') || '[]')
+    if (saved.length) {
+      setSelectedDomains(saved)
+    }
+  }, [])
+
+  const toggleDomain = (id) => {
+    setSelectedDomains((prev) => {
+      const next = prev.includes(id)
+        ? prev.filter((d) => d !== id)
+        : [...prev, id]
+      localStorage.setItem('onboard_domains', JSON.stringify(next))
+      return next
+    })
+  }
+
+  const hasSelection = selectedDomains.length > 0
 
   return (
     <div className="domains-container">
       <div className="domains-content">
         <div className="domains-header">
           <h2 className="domains-title">What's Your Expertise? 🎯</h2>
-          <p className="domains-subtitle">Select all domains that interest you</p>
+          <p className="domains-subtitle">
+            Select all domains that interest you
+          </p>
         </div>
 
         <div className="domains-grid">
           {domains.map(({ id, icon: Icon, label }) => {
-            const isSelected = selectedDomains.includes(id);
+            const isSelected = selectedDomains.includes(id)
             return (
               <button
                 key={id}
+                type="button"
                 onClick={() => toggleDomain(id)}
-                className={`domain-item ${isSelected ? 'selected' : ''}`}
+                className={`domain-item${isSelected ? ' selected' : ''}`}
               >
                 <div className="domain-content">
-                  <div className={`domain-icon-wrapper ${isSelected ? 'selected' : ''}`}>
-                    <Icon className={`domain-icon ${isSelected ? 'selected' : ''}`} />
+                  <div className="domain-icon-wrapper">
+                    <Icon
+                      className={`domain-icon${isSelected ? ' selected' : ''}`}
+                    />
                   </div>
-                  <span className={`domain-label ${isSelected ? 'selected' : ''}`}>
+                  <span
+                    className={`domain-label${
+                      isSelected ? ' selected' : ''
+                    }`}
+                  >
                     {label}
                   </span>
                 </div>
               </button>
-            );
+            )
           })}
         </div>
 
         <div className="domains-footer">
           <button
-            onClick={() => navigate('/onboarding/category')}
+            type="button"
             className="back-button"
+            onClick={() => navigate('/onboarding/category')}
           >
             ← Back
           </button>
           <div className="step-indicator">Step 3 of 4</div>
           <button
+            type="button"
+            className={`continue-button${!hasSelection ? ' disabled' : ''}`}
             onClick={() => navigate('/onboarding/resume')}
-            className={`continue-button ${selectedDomains.length === 0 ? 'disabled' : ''}`}
-            disabled={selectedDomains.length === 0}
+            disabled={!hasSelection}
           >
             Continue →
           </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default Domains;

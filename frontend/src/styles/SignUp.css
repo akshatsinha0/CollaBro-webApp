@@ -375,3 +375,18 @@
 .phone-input::placeholder {
   color: #666 !important;
 }
+
+.form-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: -8px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+
+.password-group.error .form-input,
+.password-group.error .password-toggle-button {
+  border-color: #dc2626;
+  color: #dc2626;
+}
