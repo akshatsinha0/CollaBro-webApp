@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Laptop, Github, Linkedin, Mail } from 'lucide-react';
+import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from 'lucide-react';
 import '../styles/Login.css';
 
 function Login() {
@@ -8,21 +8,18 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate loading
+
     setTimeout(() => {
-      // Check if user has completed onboarding
       const hasCompletedOnboarding = localStorage.getItem('onboardingCompleted');
-      
+
       if (hasCompletedOnboarding) {
-        // Navigate to dashboard or home page
         navigate('/home');
       } else {
-        // First time login, go through onboarding
         navigate('/onboarding/basic-info');
       }
       setIsLoading(false);
@@ -31,13 +28,15 @@ function Login() {
 
   const handleSocialLogin = (provider) => {
     setIsLoading(true);
-    
-    // Simulate social login
+
     setTimeout(() => {
-      // For demo purposes, just navigate to onboarding
       navigate('/onboarding/basic-info');
       setIsLoading(false);
     }, 1000);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -65,15 +64,23 @@ function Login() {
                 />
               </div>
               
-              <div className="form-group">
+              <div className="form-group password-group">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
-                  className="form-input"
+                  className="form-input password-input"
                   required
                 />
+                <button
+                  type="button"
+                  className="password-toggle-button"
+                  onClick={togglePasswordVisibility}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
               
               <div className="forgot-password">
@@ -99,22 +106,25 @@ function Login() {
                   type="button" 
                   className="social-login-button github"
                   onClick={() => handleSocialLogin('github')}
+                  title="Sign in with GitHub"
                 >
-                  <Github size={20} />
+                  <Github size={36} />
                 </button>
                 <button 
                   type="button" 
                   className="social-login-button linkedin"
                   onClick={() => handleSocialLogin('linkedin')}
+                  title="Sign in with LinkedIn"
                 >
-                  <Linkedin size={20} />
+                  <Linkedin size={36} />
                 </button>
                 <button 
                   type="button" 
                   className="social-login-button google"
                   onClick={() => handleSocialLogin('google')}
+                  title="Sign in with Gmail"
                 >
-                  <Mail size={20} />
+                  <Mail size={36} />
                 </button>
               </div>
             </form>
