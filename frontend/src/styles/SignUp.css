@@ -368,3 +368,10 @@
   z-index: 999 !important;
   overflow: visible !important;
 }
+
+.phone-input {
+  color: #000 !important;
+}
+.phone-input::placeholder {
+  color: #666 !important;
+}
