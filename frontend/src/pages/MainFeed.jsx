@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Navbar from './Navbar.jsx'
+import CreatePost from '../components/CreatePost'
+import CreateProjectForm from '../components/CreateProjectForm'
 import {
   FaSearch,
   FaBell,
@@ -14,38 +17,33 @@ import {
 import '../styles/MainFeed.css'
 
 export default function MainFeed() {
+  const navigate = useNavigate()
+
+  // Profile state
   const [profile, setProfile] = useState(null)
   const [isProfileLoading, setIsProfileLoading] = useState(true)
 
-  const [communities, setCommunities] = useState([])
-  const [isCommunitiesLoading, setIsCommunitiesLoading] = useState(true)
-
-  const [projects, setProjects] = useState([])
-  const [discussions, setDiscussions] = useState([])
-  const [isFeedLoading, setIsFeedLoading] = useState(true)
-
-  const [peopleRecommendations, setPeopleRecommendations] = useState([])
-  const [isPeopleLoading, setIsPeopleLoading] = useState(true)
-
-  const [trendingTopics, setTrendingTopics] = useState([])
-  const [isTrendingLoading, setIsTrendingLoading] = useState(true)
-
+  // Onboarding flow guard
   useEffect(() => {
-    // Load onboarding data from localStorage
-    const fullName       = localStorage.getItem('onboard_fullName')
-    const currentCity    = localStorage.getItem('onboard_currentCity')
-    const organization   = localStorage.getItem('onboard_organization')
-    const category       = localStorage.getItem('onboard_category')
-    const domains        = JSON.parse(localStorage.getItem('onboard_domains') || '[]')
-    const resumeData     = JSON.parse(localStorage.getItem('onboard_resume') || '{}')
+    const fullName     = localStorage.getItem('onboard_fullName')
+    const currentCity  = localStorage.getItem('onboard_currentCity')
+    const organization = localStorage.getItem('onboard_organization')
+    const category     = localStorage.getItem('onboard_category')
+    const domains      = JSON.parse(localStorage.getItem('onboard_domains') || '[]')
+    const resumeData   = JSON.parse(localStorage.getItem('onboard_resume') || '{}')
 
-    // If any required field is missing, redirect back to step 1
-    if (!fullName || !currentCity || !organization || !category || domains.length === 0 || !resumeData.url) {
-      window.location.href = '/onboarding/basic-info'
+    if (
+      !fullName ||
+      !currentCity ||
+      !organization ||
+      !category ||
+      domains.length === 0 ||
+      !resumeData.url
+    ) {
+      navigate('/onboarding/basic-info', { replace: true })
       return
     }
 
-    // Build profile object
     setProfile({
       username: fullName.replace(/\s+/g, '').toLowerCase(),
       fullName,
@@ -56,8 +54,31 @@ export default function MainFeed() {
       avatar: null
     })
     setIsProfileLoading(false)
+  }, [navigate])
 
-    // Simulate or remove your other fetch calls as needed:
+  // Communities state
+  const [communities, setCommunities] = useState([])
+  const [isCommunitiesLoading, setIsCommunitiesLoading] = useState(true)
+
+  // Feed state
+  const [projects, setProjects] = useState([])
+  const [discussions, setDiscussions] = useState([])
+  const [isFeedLoading, setIsFeedLoading] = useState(true)
+
+  // People you may know
+  const [peopleRecommendations, setPeopleRecommendations] = useState([])
+  const [isPeopleLoading, setIsPeopleLoading] = useState(true)
+
+  // Trending topics
+  const [trendingTopics, setTrendingTopics] = useState([])
+  const [isTrendingLoading, setIsTrendingLoading] = useState(true)
+
+  // Create post/project form popups
+  const [showCreatePost, setShowCreatePost] = useState(false)
+  const [showProjectForm, setShowProjectForm] = useState(false)
+
+  // Simulated fetches (replace with real APIs when ready)
+  useEffect(() => {
     // Communities
     setTimeout(() => {
       setCommunities([
@@ -74,7 +95,11 @@ export default function MainFeed() {
       setProjects([
         {
           id: 1,
-          author: { username: profile?.username, location: `${profile?.organization}`, avatar: null },
+          author: {
+            username: profile?.username,
+            location: profile?.organization,
+            avatar: null
+          },
           title: 'Collaborative Capstone Project',
           image: null,
           postedAt: 'Just now',
@@ -85,7 +110,11 @@ export default function MainFeed() {
       setDiscussions([
         {
           id: 1,
-          author: { username: profile?.username, location: profile?.city, avatar: null },
+          author: {
+            username: profile?.username,
+            location: profile?.city,
+            avatar: null
+          },
           title: 'My Onboarding Experience',
           content: 'Excited to share how CollaBro jump-started my journey!',
           postedAt: 'Just now'
@@ -100,36 +129,46 @@ export default function MainFeed() {
         {
           id: 1,
           username: 'peerCoder',
-          profession: category,
-          location: organization,
+          profession: profile?.category,
+          location: profile?.organization,
           avatar: null
         }
       ])
       setIsPeopleLoading(false)
     }, 900)
 
-    // Trending Topics
+    // Trending Topics (safe default to empty array)
     setTimeout(() => {
-      setTrendingTopics(domains.map((d, i) => ({
+      const topics = profile?.domains?.map((d, i) => ({
         id: i + 1,
         title: d,
         subtitle: `Explore ${d}`,
         avatar: null
-      })))
+      })) || []
+      setTrendingTopics(topics)
       setIsTrendingLoading(false)
     }, 700)
-  }, [])
+  }, [profile])
 
-  const handleJoinCommunity = (communityId) => {
-    console.log(`Joined community ${communityId}`)
+  // Handlers
+  const handleJoinCommunity = (id) => {
+    console.log(`Joined community ${id}`)
   }
-
-  const handleConnectPerson = (personId) => {
-    console.log(`Connection requested to ${personId}`)
+  const handleConnectPerson = (id) => {
+    console.log(`Connection requested to ${id}`)
   }
-
   const handlePostInteraction = (postId, type) => {
     console.log(`${type} on post ${postId}`)
+  }
+  const handleCreatePost = (data) => {
+    console.log('Creating post:', data)
+    setShowCreatePost(false)
+  }
+  const handleShowProjectForm = () => setShowProjectForm(true)
+  const handleCloseProjectForm = () => setShowProjectForm(false)
+  const handleProjectSubmit = (data) => {
+    console.log('Creating project:', data)
+    setShowProjectForm(false)
   }
 
   return (
@@ -208,33 +247,60 @@ export default function MainFeed() {
 
         {/* Main Content */}
         <div className="main-content">
+          <div className="create-post-container">
+            <CreatePost
+              user={profile}
+              onCreatePost={handleCreatePost}
+              onShowProjectForm={handleShowProjectForm}
+            />
+          </div>
+
+          {showProjectForm && (
+            <div className="create-project-popup">
+              <div className="create-project-popup-content">
+                <CreateProjectForm
+                  onClose={handleCloseProjectForm}
+                  onSubmit={handleProjectSubmit}
+                />
+              </div>
+            </div>
+          )}
+
           {isFeedLoading ? (
             <div className="loading-placeholder">Loading feed…</div>
           ) : (
             <>
-              {projects.map(p => (
-                <div className="card project-card" key={p.id}>
-                  <div className="card-user-header">
-                    <div className="user-info">
-                      <div className="user-avatar"></div>
-                      <div>
-                        <p className="user-name">@{p.author.username}</p>
-                        <p className="user-details">{p.author.location} • {p.postedAt}</p>
+              {projects.length > 0 ? (
+                projects.map(p => (
+                  <div className="card project-card" key={p.id}>
+                    <div className="card-user-header">
+                      <div className="user-info">
+                        <div className="user-avatar"></div>
+                        <div>
+                          <p className="user-name">@{p.author.username}</p>
+                          <p className="user-details">{p.author.location} • {p.postedAt}</p>
+                        </div>
                       </div>
+                      <button className="options-button">⋮</button>
                     </div>
-                    <button className="options-button">⋮</button>
+                    <h2 className="project-title">{p.title}</h2>
+                    <div className="project-image"></div>
+                    <div className="project-actions">
+                      <button className="action-button" onClick={() => handlePostInteraction(p.id, 'like')}><FaRegHeart /></button>
+                      <button className="action-button" onClick={() => handlePostInteraction(p.id, 'comment')}><FaRegCommentAlt /></button>
+                      <button className="action-button" onClick={() => handlePostInteraction(p.id, 'share')}><FaShareAlt /></button>
+                    </div>
                   </div>
-                  <h2 className="project-title">{p.title}</h2>
-                  <div className="project-image"></div>
-                  <div className="project-actions">
-                    <button className="action-button" onClick={() => handlePostInteraction(p.id, 'like')}><FaRegHeart /></button>
-                    <button className="action-button" onClick={() => handlePostInteraction(p.id, 'comment')}><FaRegCommentAlt /></button>
-                    <button className="action-button" onClick={() => handlePostInteraction(p.id, 'share')}><FaShareAlt /></button>
-                  </div>
+                ))
+              ) : (
+                <div className="card empty-state">
+                  <FaInbox className="empty-state-icon" />
+                  <p className="empty-state-text">No projects in your feed yet.</p>
+                  <button className="empty-state-button">Explore Projects</button>
                 </div>
-              ))}
+              )}
 
-              {discussions.map(d => (
+              {discussions.length > 0 && discussions.map(d => (
                 <div className="card discussion-card" key={d.id}>
                   <div className="card-user-header">
                     <div className="user-info">
@@ -284,13 +350,14 @@ export default function MainFeed() {
             ) : (
               <div className="empty-state">No recommendations yet.</div>
             )}
+            {peopleRecommendations.length > 0 && (
+              <button className="show-all-button">Show all</button>
+            )}
           </div>
 
           <div className="card trending-card">
             <div className="card-header">
-              <h2 className="card-title">
-                Trending <FaFire />
-              </h2>
+              <h2 className="card-title">Trending <FaFire /></h2>
             </div>
             {isTrendingLoading ? (
               <div className="loading-placeholder">Loading…</div>
