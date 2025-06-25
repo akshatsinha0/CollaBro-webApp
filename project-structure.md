@@ -1,6 +1,6 @@
 # Project Structure
 
-Generated on: 6/25/2025, 2:22:11 PM
+Generated on: 6/25/2025, 4:54:00 PM
 Root: e:\CollaBro-webApp
 
 ```
@@ -45,7 +45,12 @@ Root: e:\CollaBro-webApp
 │   │   └── vite.svg
 │   ├── src/
 │   │   ├── assets/
-│   │   │   └── react.svg
+│   │   │   ├── react.svg
+│   │   │   └── signin&signupformsideimage.png
+│   │   ├── components/
+│   │   │   ├── CreatePost.jsx
+│   │   │   ├── CreateProjectForm.jsx
+│   │   │   └── ErrorBoundary.jsx
 │   │   ├── pages/
 │   │   │   ├── onboarding/
 │   │   │   │   ├── BasicInfo.jsx
@@ -64,6 +69,8 @@ Root: e:\CollaBro-webApp
 │   │   │   │   ├── Category.css
 │   │   │   │   ├── Domains.css
 │   │   │   │   └── Resume.css
+│   │   │   ├── CreatePost.css
+│   │   │   ├── CreateProjectForm.css
 │   │   │   ├── Login.css
 │   │   │   ├── MainFeed.css
 │   │   │   ├── Navbar.css
@@ -81,6 +88,7 @@ Root: e:\CollaBro-webApp
 │   ├── README.md
 │   └── vite.config.js
 ├── .gitignore
+├── .hintrc
 ├── package-lock.json
 ├── package.json
 └── README.md
