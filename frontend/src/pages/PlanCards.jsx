@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/Planner.css';
+import PropTypes from 'prop-types';
 
 const PlanCards = ({ isAnnual }) => {
   const [activeCard, setActiveCard] = useState(0);
@@ -65,6 +66,10 @@ const PlanCards = ({ isAnnual }) => {
       ))}
     </div>
   );
+};
+
+PlanCards.propTypes = {
+  isAnnual: PropTypes.bool.isRequired
 };
 
 export default PlanCards;

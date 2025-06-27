@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { User, MapPin, Building2 } from 'lucide-react'
 import '../../styles/onboarding/BasicInfo.css'
 
-export default function BasicInfo() {
+const BasicInfo = () => {
   const navigate = useNavigate()
   const [fullName, setFullName] = useState('')
   const [currentCity, setCurrentCity] = useState('')
@@ -106,3 +105,5 @@ export default function BasicInfo() {
     </div>
   )
 }
+
+export default BasicInfo

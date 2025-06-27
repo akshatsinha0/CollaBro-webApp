@@ -3,20 +3,24 @@ import { useNavigate } from 'react-router-dom'
 import Navbar from './Navbar.jsx'
 import CreatePost from '../components/CreatePost'
 import CreateProjectForm from '../components/CreateProjectForm'
+import ProfileCard from '../components/ProfileCard'
+import ProjectCard from '../components/ProjectCard'
+import DiscussionCard from '../components/DiscussionCard'
+import CommunitiesCard from '../components/CommunitiesCard'
+import PeopleCard from '../components/PeopleCard'
+import TrendingTopicsCard from '../components/TrendingTopicsCard'
+import UpgradeCard from '../components/UpgradeCard'
+import CreateProjectPopup from '../components/CreateProjectPopup'
 import {
   FaSearch,
   FaBell,
-  FaUserCircle,
-  FaChevronDown,
-  FaRegHeart,
-  FaRegCommentAlt,
-  FaShareAlt,
   FaFire,
-  FaInbox
+  FaInbox,
+  FaChevronDown
 } from 'react-icons/fa'
 import '../styles/MainFeed.css'
 
-export default function MainFeed() {
+const MainFeed = () => {
   const navigate = useNavigate()
 
   // Profile state
@@ -178,71 +182,13 @@ export default function MainFeed() {
       <div className="feed-layout">
         {/* Left Sidebar */}
         <div className="left-sidebar">
-          <div className="card profile-card">
-            {isProfileLoading ? (
-              <div className="loading-placeholder">Loading profile…</div>
-            ) : (
-              <>
-                <div className="profile-header">
-                  <button className="menu-button">
-                    <FaChevronDown />
-                  </button>
-                </div>
-                <div className="profile-content">
-                  <div className="avatar">
-                    {profile.avatar || <FaUserCircle size={64} />}
-                  </div>
-                  <p className="username">@{profile.username}</p>
-                  <h2 className="fullname">{profile.fullName}</h2>
-                  <p className="details">{profile.city} • {profile.organization}</p>
-                </div>
-                <div className="profile-stats">
-                  <div className="stat-item">
-                    <p className="stat-value">{profile.domains.length}</p>
-                    <p className="stat-label">Domains</p>
-                  </div>
-                  <div className="stat-item">
-                    <p className="stat-value">{profile.category}</p>
-                    <p className="stat-label">Category</p>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
+          <ProfileCard profile={profile} isProfileLoading={isProfileLoading} />
 
-          <div className="card communities-card">
-            <div className="card-header">
-              <h2 className="card-title">Communities</h2>
-              <button className="icon-button"><FaSearch /></button>
-              <button className="icon-button">+</button>
-            </div>
-            {isCommunitiesLoading ? (
-              <div className="loading-placeholder">Loading…</div>
-            ) : communities.length > 0 ? (
-              communities.map(c => (
-                <div className="community-item" key={c.id}>
-                  <div className="community-info">
-                    <div className="community-avatar"></div>
-                    <div>
-                      <p className="community-name">{c.name}</p>
-                      <p className="community-details">
-                        {c.category} • {c.members} members
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    className="add-button"
-                    onClick={() => handleJoinCommunity(c.id)}
-                  >+</button>
-                </div>
-              ))
-            ) : (
-              <div className="empty-state">No communities yet.</div>
-            )}
-            {communities.length > 0 && (
-              <button className="show-all-button">Show all</button>
-            )}
-          </div>
+          <CommunitiesCard
+            communities={communities}
+            isLoading={isCommunitiesLoading}
+            onJoin={handleJoinCommunity}
+          />
         </div>
 
         {/* Main Content */}
@@ -255,16 +201,11 @@ export default function MainFeed() {
             />
           </div>
 
-          {showProjectForm && (
-            <div className="create-project-popup">
-              <div className="create-project-popup-content">
-                <CreateProjectForm
-                  onClose={handleCloseProjectForm}
-                  onSubmit={handleProjectSubmit}
-                />
-              </div>
-            </div>
-          )}
+          <CreateProjectPopup
+            show={showProjectForm}
+            onClose={handleCloseProjectForm}
+            onSubmit={handleProjectSubmit}
+          />
 
           {isFeedLoading ? (
             <div className="loading-placeholder">Loading feed…</div>
@@ -272,25 +213,7 @@ export default function MainFeed() {
             <>
               {projects.length > 0 ? (
                 projects.map(p => (
-                  <div className="card project-card" key={p.id}>
-                    <div className="card-user-header">
-                      <div className="user-info">
-                        <div className="user-avatar"></div>
-                        <div>
-                          <p className="user-name">@{p.author.username}</p>
-                          <p className="user-details">{p.author.location} • {p.postedAt}</p>
-                        </div>
-                      </div>
-                      <button className="options-button">⋮</button>
-                    </div>
-                    <h2 className="project-title">{p.title}</h2>
-                    <div className="project-image"></div>
-                    <div className="project-actions">
-                      <button className="action-button" onClick={() => handlePostInteraction(p.id, 'like')}><FaRegHeart /></button>
-                      <button className="action-button" onClick={() => handlePostInteraction(p.id, 'comment')}><FaRegCommentAlt /></button>
-                      <button className="action-button" onClick={() => handlePostInteraction(p.id, 'share')}><FaShareAlt /></button>
-                    </div>
-                  </div>
+                  <ProjectCard key={p.id} project={p} onPostInteraction={handlePostInteraction} />
                 ))
               ) : (
                 <div className="card empty-state">
@@ -301,20 +224,7 @@ export default function MainFeed() {
               )}
 
               {discussions.length > 0 && discussions.map(d => (
-                <div className="card discussion-card" key={d.id}>
-                  <div className="card-user-header">
-                    <div className="user-info">
-                      <div className="user-avatar"></div>
-                      <div>
-                        <p className="user-name">@{d.author.username}</p>
-                        <p className="user-details">{d.author.location} • {d.postedAt}</p>
-                      </div>
-                    </div>
-                    <button className="options-button">⋮</button>
-                  </div>
-                  <h2 className="discussion-title">{d.title}</h2>
-                  <p className="discussion-content">{d.content}</p>
-                </div>
+                <DiscussionCard key={d.id} discussion={d} />
               ))}
             </>
           )}
@@ -322,61 +232,22 @@ export default function MainFeed() {
 
         {/* Right Sidebar */}
         <div className="right-sidebar">
-          <div className="card upgrade-card">
-            <h2 className="upgrade-title">Premium Features</h2>
-            <button className="upgrade-button">Try Free for 14 days</button>
-          </div>
+          <UpgradeCard />
 
-          <div className="card people-card">
-            <div className="card-header">
-              <h2 className="card-title">People you may know</h2>
-              <button className="icon-button"><FaChevronDown /></button>
-            </div>
-            {isPeopleLoading ? (
-              <div className="loading-placeholder">Loading…</div>
-            ) : peopleRecommendations.length > 0 ? (
-              peopleRecommendations.map(p => (
-                <div className="person-item" key={p.id}>
-                  <div className="person-info">
-                    <div className="person-avatar"></div>
-                    <div>
-                      <p className="person-name">@{p.username}</p>
-                      <p className="person-details">{p.profession} • {p.location}</p>
-                    </div>
-                  </div>
-                  <button className="add-button" onClick={() => handleConnectPerson(p.id)}>+</button>
-                </div>
-              ))
-            ) : (
-              <div className="empty-state">No recommendations yet.</div>
-            )}
-            {peopleRecommendations.length > 0 && (
-              <button className="show-all-button">Show all</button>
-            )}
-          </div>
+          <PeopleCard
+            people={peopleRecommendations}
+            isLoading={isPeopleLoading}
+            onConnect={handleConnectPerson}
+          />
 
-          <div className="card trending-card">
-            <div className="card-header">
-              <h2 className="card-title">Trending <FaFire /></h2>
-            </div>
-            {isTrendingLoading ? (
-              <div className="loading-placeholder">Loading…</div>
-            ) : trendingTopics.length > 0 ? (
-              trendingTopics.map(t => (
-                <div className="trending-item" key={t.id}>
-                  <div className="trending-avatar"></div>
-                  <div>
-                    <p className="trending-title">{t.title}</p>
-                    <p className="trending-details">{t.subtitle}</p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="empty-state">No trending topics.</div>
-            )}
-          </div>
+          <TrendingTopicsCard
+            topics={trendingTopics}
+            isLoading={isTrendingLoading}
+          />
         </div>
       </div>
     </div>
   )
 }
+
+export default MainFeed

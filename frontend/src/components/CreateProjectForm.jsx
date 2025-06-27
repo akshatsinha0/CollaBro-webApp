@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaTimes, FaPlus, FaTrash } from 'react-icons/fa';
 import '../styles/CreateProjectForm.css';
+import PropTypes from 'prop-types';
 
 const DOMAIN_OPTIONS = [
   'Web Development',
@@ -36,7 +37,7 @@ const PROJECT_TYPES = [
   'Open Source'
 ];
 
-function CreateProjectForm({ onClose, onSubmit }) {
+const CreateProjectForm = ({ onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
     projectName: '',
     description: '',
@@ -275,6 +276,11 @@ function CreateProjectForm({ onClose, onSubmit }) {
       </div>
     </div>
   );
+}
+
+CreateProjectForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default CreateProjectForm; 

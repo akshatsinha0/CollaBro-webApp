@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import sideImage from '../assets/signin&signupformsideimage.png';
 import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from 'lucide-react';
 import '../styles/Login.css';
 
-function Login() {
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

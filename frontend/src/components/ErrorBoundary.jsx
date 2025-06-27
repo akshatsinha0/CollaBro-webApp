@@ -1,5 +1,6 @@
-
+import './ErrorBoundary.css'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -24,22 +25,14 @@ export default class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '2rem', textAlign: 'center' }}>
+        <div className="error-boundary-container">
           <h1>Something went wrong.</h1>
-          <p style={{ color: '#555' }}>
+          <p className="error-message">
             {this.state.error?.message || 'An unexpected error occurred.'}
           </p>
           <button
             onClick={this.handleReload}
-            style={{
-              marginTop: '1rem',
-              padding: '0.5rem 1rem',
-              background: '#3b82f6',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            className="error-retry-button"
           >
             Try Again
           </button>
@@ -48,4 +41,9 @@ export default class ErrorBoundary extends React.Component {
     }
     return this.props.children
   }
+}
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node,
+  onReset: PropTypes.func
 }

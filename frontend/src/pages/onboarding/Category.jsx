@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { GraduationCap, Briefcase, Rocket } from 'lucide-react'
 import '../../styles/onboarding/Category.css'
 
-export default function Category() {
+const Category = () => {
   const navigate = useNavigate()
   const [selected, setSelected] = useState('')
 
@@ -94,3 +94,5 @@ export default function Category() {
     </div>
   )
 }
+
+export default Category

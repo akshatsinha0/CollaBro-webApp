@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import '../../styles/onboarding/Domains.css'
 
-export default function Domains() {
+const Domains = () => {
   const navigate = useNavigate()
   const [selectedDomains, setSelectedDomains] = useState([])
 
@@ -107,3 +107,5 @@ export default function Domains() {
     </div>
   )
 }
+
+export default Domains

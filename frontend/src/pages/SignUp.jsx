@@ -5,7 +5,7 @@ import 'react-phone-input-2/lib/style.css'
 import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from 'lucide-react'
 import '../styles/SignUp.css'
 
-export default function SignUp() {
+const SignUp = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
@@ -214,5 +214,7 @@ export default function SignUp() {
         </div>
       </div>
     </div>
-)
+  )
 }
+
+export default SignUp

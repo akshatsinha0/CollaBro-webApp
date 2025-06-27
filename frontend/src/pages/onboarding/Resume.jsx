@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Upload, CheckCircle, AlertCircle } from 'lucide-react'
 import '../../styles/onboarding/Resume.css'
 
-export default function Resume() {
+const Resume = () => {
   const navigate = useNavigate()
   const [isDragging, setIsDragging] = useState(false)
   const [fileData, setFileData] = useState({ name: '', url: '' })
@@ -151,3 +151,5 @@ export default function Resume() {
     </div>
   )
 }
+
+export default Resume

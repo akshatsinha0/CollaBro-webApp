@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaImage, FaVideo, FaLink } from 'react-icons/fa';
 import '../styles/CreatePost.css';
+import PropTypes from 'prop-types';
 
-function CreatePost({ user, onCreatePost, onShowProjectForm }) {
+const CreatePost = ({ user, onCreatePost, onShowProjectForm }) => {
   const [postContent, setPostContent] = useState('');
 
   const handleSubmit = (e) => {
@@ -68,6 +69,15 @@ function CreatePost({ user, onCreatePost, onShowProjectForm }) {
       </div>
     </div>
   );
-}   
+}
+
+CreatePost.propTypes = {
+  user: PropTypes.shape({
+    avatar: PropTypes.string,
+    username: PropTypes.string
+  }),
+  onCreatePost: PropTypes.func.isRequired,
+  onShowProjectForm: PropTypes.func
+}
 
 export default CreatePost; 
