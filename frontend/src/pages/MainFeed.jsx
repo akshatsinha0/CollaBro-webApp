@@ -42,27 +42,6 @@ const MainFeed = () => {
     <div className="main-feed">
       <Navbar />
 
-      {/* Create Project Button at the top of the main feed */}
-      <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '24px 0 8px 0' }}>
-        <button
-          className="create-project-btn"
-          onClick={() => handleShowProjectForm()}
-          style={{
-            background: 'linear-gradient(90deg, #6366f1 0%, #60a5fa 100%)',
-            color: '#fff',
-            border: 'none',
-            borderRadius: 8,
-            padding: '10px 24px',
-            fontWeight: 600,
-            fontSize: 16,
-            cursor: 'pointer',
-            boxShadow: '0 2px 8px 0 rgba(99, 102, 241, 0.10)'
-          }}
-        >
-          Create Project
-        </button>
-      </div>
-
       <div className="feed-layout">
         <LeftSidebar
           profile={profile}

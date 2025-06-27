@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { FaImage, FaVideo, FaLink } from 'react-icons/fa';
+import { FaImage, FaVideo, FaLink, FaPlus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import './CreatePostForm.css';
+import CreateProjectPopup from '../CREATE_PROJECT/CreateProjectPopup';
 
 const CreatePostForm = ({ user, onCreatePost }) => {
   const [postContent, setPostContent] = useState('');
+  const [showProjectPopup, setShowProjectPopup] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +17,13 @@ const CreatePostForm = ({ user, onCreatePost }) => {
       });
       setPostContent('');
     }
+  };
+
+  const handleOpenProjectPopup = () => setShowProjectPopup(true);
+  const handleCloseProjectPopup = () => setShowProjectPopup(false);
+  const handleProjectSubmit = (projectData) => {
+    
+    setShowProjectPopup(false);
   };
 
   return (
@@ -48,6 +57,11 @@ const CreatePostForm = ({ user, onCreatePost }) => {
                 <FaLink /> Link
               </button>
             </div>
+            <div className="create-project-box">
+              <button type="button" className="attachment-button" onClick={handleOpenProjectPopup}>
+                <FaPlus /> Create Project
+              </button>
+            </div>
             <div className="post-buttons">
               <button
                 type="submit"
@@ -57,6 +71,11 @@ const CreatePostForm = ({ user, onCreatePost }) => {
                 Post
               </button>
             </div>
+            <CreateProjectPopup
+              show={showProjectPopup}
+              onClose={handleCloseProjectPopup}
+              onSubmit={handleProjectSubmit}
+            />
           </div>
         </form>
       </div>
