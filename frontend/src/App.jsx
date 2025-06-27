@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import ErrorBoundary from './components/ErrorBoundary'
+import ErrorBoundary from './components/home/ErrorBoundary/ErrorBoundary'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import BasicInfo from './pages/onboarding/BasicInfo'

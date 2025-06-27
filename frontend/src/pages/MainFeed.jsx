@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from './Navbar.jsx'
-import CreatePost from '../components/CreatePost'
-import CreateProjectForm from '../components/CreateProjectForm'
-import ProfileCard from '../components/ProfileCard'
-import ProjectCard from '../components/ProjectCard'
-import DiscussionCard from '../components/DiscussionCard'
-import CommunitiesCard from '../components/CommunitiesCard'
-import PeopleCard from '../components/PeopleCard'
-import TrendingTopicsCard from '../components/TrendingTopicsCard'
-import UpgradeCard from '../components/UpgradeCard'
-import CreateProjectPopup from '../components/CreateProjectPopup'
+// import CreateProjectForm from '../components/home/CREATE_PROJECT/CreateProjectForm'
+import ProfileCard from '../components/home/ProfileCard'
+import ProjectCard from '../components/home/ProjectCard'
+import DiscussionCard from '../components/home/DiscussionCard'
+import CommunitiesCard from '../components/home/CommunitiesCard'
+import PeopleCard from '../components/home/PeopleCard'
+import TrendingTopicsCard from '../components/home/TrendingTopicsCard'
+import UpgradeCard from '../components/home/UpgradeCard'
+import CreateProjectPopup from '../components/home/CREATE_PROJECT/CreateProjectPopup'
+import CreatePostForm from '../components/home/CREATE_POST/CreatePostForm'
 import {
   FaSearch,
   FaBell,
@@ -104,7 +104,7 @@ const MainFeed = () => {
             location: profile?.organization,
             avatar: null
           },
-          title: 'Collaborative Capstone Project',
+          title: 'Capstone Project',
           image: null,
           postedAt: 'Just now',
           likes: 0,
@@ -179,6 +179,27 @@ const MainFeed = () => {
     <div className="main-feed">
       <Navbar />
 
+      {/* Create Project Button at the top of the main feed */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '24px 0 8px 0' }}>
+        <button
+          className="create-project-btn"
+          onClick={() => setShowProjectForm(true)}
+          style={{
+            background: 'linear-gradient(90deg, #6366f1 0%, #60a5fa 100%)',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 8,
+            padding: '10px 24px',
+            fontWeight: 600,
+            fontSize: 16,
+            cursor: 'pointer',
+            boxShadow: '0 2px 8px 0 rgba(99, 102, 241, 0.10)'
+          }}
+        >
+          Create Project
+        </button>
+      </div>
+
       <div className="feed-layout">
         {/* Left Sidebar */}
         <div className="left-sidebar">
@@ -194,10 +215,9 @@ const MainFeed = () => {
         {/* Main Content */}
         <div className="main-content">
           <div className="create-post-container">
-            <CreatePost
+            <CreatePostForm
               user={profile}
               onCreatePost={handleCreatePost}
-              onShowProjectForm={handleShowProjectForm}
             />
           </div>
 

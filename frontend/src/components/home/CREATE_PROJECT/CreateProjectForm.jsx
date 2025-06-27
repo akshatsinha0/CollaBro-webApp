@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaTimes, FaPlus, FaTrash } from 'react-icons/fa';
-import '../styles/CreateProjectForm.css';
+import '../../../styles/CreateProjectForm.css';
+import CreateProjectHeader from './CreateProjectHeader';
 import PropTypes from 'prop-types';
 
 const DOMAIN_OPTIONS = [
@@ -26,7 +27,24 @@ const SKILLS_MAP = {
   'DevOps': ['Jenkins', 'GitLab CI', 'GitHub Actions', 'Ansible', 'Puppet', 'Chef'],
   'UI/UX Design': ['Figma', 'Adobe XD', 'Sketch', 'Photoshop', 'Illustrator'],
   'Game Development': ['Unity', 'Unreal Engine', 'C#', 'C++', 'OpenGL'],
-  'Cybersecurity': ['Network Security', 'Ethical Hacking', 'Penetration Testing', 'Security Analysis']
+  'Cybersecurity': ['Network Security', 'Ethical Hacking', 'Penetration Testing', 'Security Analysis'],
+  'Soft Skills': [
+    'Communication',
+    'Leadership',
+    'Teamwork',
+    'Creativity',
+    'Problem Solving',
+    'Critical Thinking',
+    'Adaptability',
+    'Time Management',
+    'Conflict Resolution',
+    'Emotional Intelligence',
+    'Collaboration',
+    'Work Ethic',
+    'Attention to Detail',
+    'Decision Making',
+    'Interpersonal Skills'
+  ]
 };
 
 const PROJECT_TYPES = [
@@ -35,6 +53,10 @@ const PROJECT_TYPES = [
   'Startup',
   'Research',
   'Open Source'
+];
+
+const SUGGESTED_SKILLS = [
+  'Python', 'React', 'Next.js', 'Node.js', 'UI/UX Design', 'Figma', 'Java', 'C++', 'Communication', 'Leadership', 'Teamwork', 'Creativity', 'SQL', 'AWS', 'Docker', 'Kubernetes', 'TypeScript', 'HTML', 'CSS', 'JavaScript'
 ];
 
 const CreateProjectForm = ({ onClose, onSubmit }) => {
@@ -53,6 +75,11 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
     references: []
   });
 
+  const [skillInput, setSkillInput] = useState('');
+  const [skills, setSkills] = useState([]);
+  const [showSkillDropdown, setShowSkillDropdown] = useState(false);
+  const skillInputRef = useRef(null);
+
   const handleDomainChange = (collaboratorId, domain) => {
     setFormData(prev => ({
       ...prev,
@@ -64,27 +91,32 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
     }));
   };
 
-  const handleSkillSelect = (collaboratorId, skill) => {
-    setFormData(prev => ({
-      ...prev,
-      collaborators: prev.collaborators.map(collab => 
-        collab.id === collaboratorId 
-          ? { ...collab, skills: [...collab.skills, skill] } 
-          : collab
-      )
-    }));
+  const addSkill = (skill) => {
+    if (skill && !skills.includes(skill)) {
+      setSkills([...skills, skill]);
+    }
+    setSkillInput('');
+    setShowSkillDropdown(false);
+    skillInputRef.current?.focus();
   };
 
-  const removeSkill = (collaboratorId, skill) => {
-    setFormData(prev => ({
-      ...prev,
-      collaborators: prev.collaborators.map(collab => 
-        collab.id === collaboratorId 
-          ? { ...collab, skills: collab.skills.filter(s => s !== skill) } 
-          : collab
-      )
-    }));
+  const removeSkill = (skill) => setSkills(skills.filter(s => s !== skill));
+
+  const handleSkillInput = (e) => {
+    setSkillInput(e.target.value);
+    setShowSkillDropdown(true);
   };
+
+  const handleSkillKeyDown = (e) => {
+    if ((e.key === 'Enter' || e.key === ',') && skillInput.trim()) {
+      e.preventDefault();
+      addSkill(skillInput.trim());
+    } else if (e.key === 'Backspace' && !skillInput && skills.length) {
+      removeSkill(skills[skills.length - 1]);
+    }
+  };
+
+  const filteredSkills = SUGGESTED_SKILLS.filter(s => s.toLowerCase().includes(skillInput.toLowerCase()) && !skills.includes(s));
 
   const addCollaborator = () => {
     setFormData(prev => ({
@@ -125,6 +157,7 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
   return (
     <div className="create-project-form-overlay">
       <div className="create-project-form">
+        <CreateProjectHeader onPostProject={onSubmit} />
         <div className="form-header">
           <h2>Create New Project</h2>
           <button className="close-button" onClick={onClose}>
@@ -139,8 +172,8 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
               type="text"
               className="form-input"
               value={formData.projectName}
-              onChange={(e) => setFormData(prev => ({ ...prev, projectName: e.target.value }))}
-              placeholder="Enter project name"
+              onChange={(e) => setFormData({ ...formData, projectName: e.target.value })}
+              placeholder="e.g. Smart Home Automation"
               required
             />
           </div>
@@ -190,30 +223,40 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
                         required
                       >
                         <option value="">Select Domain</option>
-                        {DOMAIN_OPTIONS.map(domain => (
+                        {DOMAIN_OPTIONS.map((domain) => (
                           <option key={domain} value={domain}>{domain}</option>
                         ))}
+                        <option value="Soft Skills">Soft Skills</option>
                       </select>
                     </div>
-
                     <div className="form-group">
-                      <label>Skills</label>
-                      <select
+                      <label>SkillSet</label>
+                      <input
+                        type="text"
                         className="form-input"
-                        value=""
-                        onChange={(e) => handleSkillSelect(collaborator.id, e.target.value)}
-                        disabled={!collaborator.domain}
-                      >
-                        <option value="">Select Skills</option>
-                        {collaborator.domain && SKILLS_MAP[collaborator.domain].map(skill => (
-                          <option key={skill} value={skill}>{skill}</option>
-                        ))}
-                      </select>
-                      <div className="tags-container">
-                        {collaborator.skills.map(skill => (
-                          <span key={skill} className="tag">
-                            {skill}
-                            <button type="button" onClick={() => removeSkill(collaborator.id, skill)}>×</button>
+                        placeholder="e.g., Python, React, UX Design"
+                        value={skillInput}
+                        onChange={handleSkillInput}
+                        onKeyDown={handleSkillKeyDown}
+                        ref={skillInputRef}
+                      />
+                      {showSkillDropdown && filteredSkills.length > 0 && (
+                        <div className="skill-dropdown">
+                          {filteredSkills.map((skill) => (
+                            <div
+                              key={skill}
+                              className="skill-suggestion"
+                              onMouseDown={() => addSkill(skill)}
+                            >
+                              {skill}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      <div className="skill-tags">
+                        {skills.map((skill) => (
+                          <span className="skill-tag" key={skill} onClick={() => removeSkill(skill)}>
+                            {skill} <FaTimes className="remove-skill-icon" />
                           </span>
                         ))}
                       </div>
@@ -229,9 +272,9 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
             <input
               type="number"
               className="form-input"
-              min="1"
               value={formData.duration}
-              onChange={(e) => setFormData(prev => ({ ...prev, duration: parseInt(e.target.value) }))}
+              onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+              min="1"
               required
             />
           </div>
@@ -241,11 +284,11 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
             <select
               className="form-input"
               value={formData.projectType}
-              onChange={(e) => setFormData(prev => ({ ...prev, projectType: e.target.value }))}
+              onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
               required
             >
               <option value="">Select Project Type</option>
-              {PROJECT_TYPES.map(type => (
+              {PROJECT_TYPES.map((type) => (
                 <option key={type} value={type}>{type}</option>
               ))}
             </select>
@@ -258,29 +301,19 @@ const CreateProjectForm = ({ onClose, onSubmit }) => {
               className="form-input"
               multiple
               onChange={handleFileUpload}
-              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
             />
-            <div className="file-list">
-              {formData.references.map((file, index) => (
-                <div key={index} className="file-item">
-                  {file.name}
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div className="form-actions">
-            <button type="submit" className="submit-button">Create Project</button>
-          </div>
+          <button type="submit" className="submit-project-btn">Create Project</button>
         </form>
       </div>
     </div>
   );
-}
+};
 
 CreateProjectForm.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
-}
+};
 
 export default CreateProjectForm; 

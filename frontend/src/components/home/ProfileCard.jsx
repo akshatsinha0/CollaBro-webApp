@@ -14,7 +14,6 @@ const ProfileCard = ({ profile, isProfileLoading }) => (
         </div>
         <div className="profilecard-avatar-wrapper">
           <div className="profilecard-avatar">
-            {/* Replace with actual image if available */}
             <img src={profile.avatar || '/profile-placeholder.svg'} alt="Profile" className="profilecard-avatar-img" />
           </div>
         </div>

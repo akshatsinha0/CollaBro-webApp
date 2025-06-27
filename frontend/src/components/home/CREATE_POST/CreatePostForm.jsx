@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FaImage, FaVideo, FaLink } from 'react-icons/fa';
-import '../styles/CreatePost.css';
 import PropTypes from 'prop-types';
+import './CreatePostForm.css';
 
-const CreatePost = ({ user, onCreatePost, onShowProjectForm }) => {
+const CreatePostForm = ({ user, onCreatePost }) => {
   const [postContent, setPostContent] = useState('');
 
   const handleSubmit = (e) => {
@@ -50,13 +50,6 @@ const CreatePost = ({ user, onCreatePost, onShowProjectForm }) => {
             </div>
             <div className="post-buttons">
               <button
-                type="button"
-                className="create-project-button"
-                onClick={onShowProjectForm}
-              >
-                Create Project
-              </button>
-              <button
                 type="submit"
                 className="post-button"
                 disabled={!postContent.trim()}
@@ -69,15 +62,14 @@ const CreatePost = ({ user, onCreatePost, onShowProjectForm }) => {
       </div>
     </div>
   );
-}
+};
 
-CreatePost.propTypes = {
+CreatePostForm.propTypes = {
   user: PropTypes.shape({
     avatar: PropTypes.string,
     username: PropTypes.string
   }),
-  onCreatePost: PropTypes.func.isRequired,
-  onShowProjectForm: PropTypes.func
-}
+  onCreatePost: PropTypes.func.isRequired
+};
 
-export default CreatePost; 
+export default CreatePostForm; 
