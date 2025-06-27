@@ -511,3 +511,93 @@
     padding: 0.5rem;
   }
 }
+
+.profilecard-outer {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 1.5rem auto;
+  padding-bottom: 1.5rem;
+  position: relative;
+}
+.profilecard-header {
+  background: #e5e7eb;
+  height: 60px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.75rem 1rem 0 1rem;
+}
+.profilecard-menu {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 2px;
+}
+.profilecard-avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: -40px;
+  margin-bottom: 0.5rem;
+}
+.profilecard-avatar {
+  width: 100px;
+  height: 100px;
+  background: #60a5fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 4px solid #fff;
+}
+.profilecard-avatar-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #60a5fa;
+}
+.profilecard-stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+.profilecard-stat {
+  text-align: center;
+}
+.profilecard-stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+.profilecard-stat-label {
+  font-size: 0.85rem;
+  color: #888;
+}
+.profilecard-username {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+.profilecard-fullname {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0.1rem;
+  color: #222;
+}
+.profilecard-reach {
+  text-align: left;
+  font-size: 1.05rem;
+  color: #222;
+  margin: 1.2rem 0 0 1.5rem;
+  font-weight: 500;
+}

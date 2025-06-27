@@ -1,36 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FaChevronDown, FaUserCircle } from 'react-icons/fa'
+import { FaEllipsisV } from 'react-icons/fa'
 
 const ProfileCard = ({ profile, isProfileLoading }) => (
-  <div className="card profile-card">
+  <div className="profilecard-outer">
     {isProfileLoading ? (
       <div className="loading-placeholder">Loading profile…</div>
     ) : (
       <>
-        <div className="profile-header">
-          <button className="menu-button">
-            <FaChevronDown />
-          </button>
+        <div className="profilecard-header">
+          <span></span>
+          <button className="profilecard-menu"><FaEllipsisV /></button>
         </div>
-        <div className="profile-content">
-          <div className="avatar">
-            {profile.avatar || <FaUserCircle size={64} />}
-          </div>
-          <p className="username">@{profile.username}</p>
-          <h2 className="fullname">{profile.fullName}</h2>
-          <p className="details">{profile.city} • {profile.organization}</p>
-        </div>
-        <div className="profile-stats">
-          <div className="stat-item">
-            <p className="stat-value">{profile.domains.length}</p>
-            <p className="stat-label">Domains</p>
-          </div>
-          <div className="stat-item">
-            <p className="stat-value">{profile.category}</p>
-            <p className="stat-label">Category</p>
+        <div className="profilecard-avatar-wrapper">
+          <div className="profilecard-avatar">
+            {/* Replace with actual image if available */}
+            <img src={profile.avatar || '/profile-placeholder.svg'} alt="Profile" className="profilecard-avatar-img" />
           </div>
         </div>
+        <div className="profilecard-stats-row">
+          <div className="profilecard-stat">
+            <div className="profilecard-stat-value">2.5k</div>
+            <div className="profilecard-stat-label">Connections</div>
+          </div>
+          <div className="profilecard-stat">
+            <div className="profilecard-stat-value">28</div>
+            <div className="profilecard-stat-label">Projects</div>
+          </div>
+        </div>
+        <div className="profilecard-username">@{profile.username || 'userName'}</div>
+        <div className="profilecard-fullname">{profile.fullName || 'Full Name'}</div>
+        <div className="profilecard-reach">Profile Reach</div>
       </>
     )}
   </div>
@@ -40,11 +40,7 @@ ProfileCard.propTypes = {
   profile: PropTypes.shape({
     avatar: PropTypes.string,
     username: PropTypes.string,
-    fullName: PropTypes.string,
-    city: PropTypes.string,
-    organization: PropTypes.string,
-    domains: PropTypes.array,
-    category: PropTypes.string
+    fullName: PropTypes.string
   }),
   isProfileLoading: PropTypes.bool.isRequired
 }
