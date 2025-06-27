@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: calc(100% - 56px); /* Account for avatar width + gap */
+  width: calc(100% - 56px); 
 }
 
 .post-form textarea {
@@ -162,7 +162,7 @@
   transform: none;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .create-post {
     padding: 16px;
@@ -173,7 +173,7 @@
   }
 
   .post-form {
-    width: calc(100% - 52px); /* Account for smaller gap on mobile */
+    width: calc(100% - 52px); 
   }
 
   .post-actions {
