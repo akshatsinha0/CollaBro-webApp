@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Upload, CheckCircle, AlertCircle } from 'lucide-react'
-import '../../styles/onboarding/Resume.css'
+import './Resume.css'
 
 const Resume = () => {
   const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import ErrorBoundary from './components/home/ErrorBoundary/ErrorBoundary'
+import ErrorBoundary from './shared/components/ErrorBoundary'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import BasicInfo from './pages/onboarding/BasicInfo'
@@ -8,7 +8,8 @@ import Category from './pages/onboarding/Category'
 import Domains from './pages/onboarding/Domains'
 import Resume from './pages/onboarding/Resume'
 import Planner from './pages/Planner'
-import MainFeed from './pages/MainFeed'
+import { MainFeed } from './features/feed'
+import Navbar from './pages/Navbar'
 
 function App() {
   return (

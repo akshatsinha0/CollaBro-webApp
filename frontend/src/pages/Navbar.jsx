@@ -7,7 +7,7 @@ import {
   FaChevronDown,
   FaSignOutAlt
 } from 'react-icons/fa'
-import '../styles/Navbar.css'
+import './Navbar.css'
 
 const Navbar = () => {
   const navigate = useNavigate()

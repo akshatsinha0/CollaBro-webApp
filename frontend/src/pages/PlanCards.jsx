@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/Planner.css';
+import './Planner.css';
 import PropTypes from 'prop-types';
 
 const PlanCards = ({ isAnnual }) => {

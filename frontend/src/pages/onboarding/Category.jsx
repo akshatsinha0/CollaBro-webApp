@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GraduationCap, Briefcase, Rocket } from 'lucide-react'
-import '../../styles/onboarding/Category.css'
+import './Category.css'
 
 const Category = () => {
   const navigate = useNavigate()

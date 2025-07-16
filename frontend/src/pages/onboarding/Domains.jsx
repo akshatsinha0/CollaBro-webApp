@@ -10,7 +10,7 @@ import {
   Code,
   Camera
 } from 'lucide-react'
-import '../../styles/onboarding/Domains.css'
+import './Domains.css'
 
 const Domains = () => {
   const navigate = useNavigate()

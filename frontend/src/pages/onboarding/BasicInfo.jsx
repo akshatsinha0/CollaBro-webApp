@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { User, MapPin, Building2 } from 'lucide-react'
-import '../../styles/onboarding/BasicInfo.css'
+import './BasicInfo.css'
 
 const BasicInfo = () => {
   const navigate = useNavigate()
@@ -10,7 +10,7 @@ const BasicInfo = () => {
   const [organization, setOrganization] = useState('')
 
   useEffect(() => {
-    // Pre-fill if the user navigates back
+    // Pre-fill if the user is gonna navigate back
     const savedName = localStorage.getItem('onboard_fullName')
     const savedCity = localStorage.getItem('onboard_currentCity')
     const savedOrg  = localStorage.getItem('onboard_organization')

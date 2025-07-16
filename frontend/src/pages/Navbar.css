@@ -1,0 +1,115 @@
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.navbar-logo {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 700;
+  color: black;
+  font-family: 'Times New Roman', serif;
+  letter-spacing: 0.05em;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  width: 25.5rem;
+}
+
+.search-icon {
+  color: #6b7280;
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  color: #374151;
+  border : none;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.notification-icon {
+  font-size: 1.25rem;
+  color: #374151;
+  cursor: pointer;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.user-icon {
+  font-size: 1.25rem;
+  color: #374151;
+}
+
+.user-name {
+  color: #374151;
+}
+
+.chevron-icon {
+  font-size: 0.875rem;
+  color: #374151;
+} 
+
+.logout-icon {
+  margin-left: 12px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+.logout-icon:hover {
+  color: #ef4444;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  min-width: 160px;
+  z-index: 100;
+  padding: 8px 0;
+  animation: fadeIn 0.2s;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #374151;
+  font-size: 1rem;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+}
+.dropdown-item:hover {
+  background: #f3f4f6;
+}
+.dropdown-logout-icon {
+  margin-left: 8px;
+}

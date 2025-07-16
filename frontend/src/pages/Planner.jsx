@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 import PlanCards from './PlanCards';
-import '../styles/Planner.css';
+import './Planner.css';
 
 const Planner = () => {
   const [isAnnual, setIsAnnual] = useState(false);

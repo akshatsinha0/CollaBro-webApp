@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from 'lucide-react'
-import '../styles/SignUp.css'
+import './SignUp.css'
 
 const SignUp = () => {
   const navigate = useNavigate()

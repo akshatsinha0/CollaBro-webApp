@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import sideImage from '../assets/signin&signupformsideimage.png';
 import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from 'lucide-react';
-import '../styles/Login.css';
+import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
