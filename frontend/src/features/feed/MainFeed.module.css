@@ -1,6 +1,6 @@
 .mainFeed {
-display: flex;
-flex-direction: column;
-min-height: 100vh;
-background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f3f4f6;
 }

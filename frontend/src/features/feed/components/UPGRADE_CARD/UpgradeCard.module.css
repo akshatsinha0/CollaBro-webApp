@@ -1,85 +1,85 @@
 .card {
-background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-color: #ffffff;
-margin-bottom: 1.5rem;
-border-radius: 16px;
-overflow: hidden;
-border: 1px solid #333333;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #333333;
 }
 .header {
-padding: 1.5rem 1.5rem 0 1.5rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .title {
-font-size: 1.25rem;
-font-weight: 600;
-margin: 0;
-color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
 }
 .subscribeButton {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-background: rgba(255, 255, 255, 0.15);
-color: #ffffff;
-border: 1px solid rgba(255, 255, 255, 0.3);
-border-radius: 20px;
-padding: 0.5rem 1rem;
-font-size: 0.875rem;
-font-weight: 600;
-transition: all 0.3s ease;
-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 .subscribeButton:hover {
-background: rgba(255, 255, 255, 0.25);
-border-color: rgba(255, 255, 255, 0.5);
-transform: translateY(-1px);
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .crownIcon {
-font-size: 0.875rem;
-color: #fbbf24;
+  font-size: 0.875rem;
+  color: #fbbf24;
 }
 .content {
-background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
-margin: 1rem;
-border-radius: 12px;
-padding: 1.5rem;
-text-align: center;
+  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  margin: 1rem;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
 }
 .upgradeTitle {
-font-size: 1.5rem;
-font-weight: 700;
-margin: 0 0 1.5rem 0;
-color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: #ffffff;
 }
 .featureList {
-list-style: none;
-padding: 0;
-margin: 0 0 2rem 0;
-text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  text-align: left;
 }
 .feature {
-font-size: 1rem;
-color: #ffffff;
-margin-bottom: 0.75rem;
-font-weight: 500;
-opacity: 0.95;
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  opacity: 0.95;
 }
 .upgradeButton {
-width: 100%;
-background: #000000;
-color: #ffffff;
-border: none;
-border-radius: 25px;
-padding: 0.875rem 1.5rem;
-font-size: 1rem;
-font-weight: 600;
-transition: all 0.2s ease;
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 .upgradeButton:hover {
-background: #1a1a1a;
-transform: translateY(-1px);
+  background: #1a1a1a;
+  transform: translateY(-1px);
 }

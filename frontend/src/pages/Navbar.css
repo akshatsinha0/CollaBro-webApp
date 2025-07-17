@@ -1,4 +1,3 @@
-
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -13,7 +12,7 @@
   font-style: italic;
   font-weight: 700;
   color: black;
-  font-family: 'Times New Roman', serif;
+  font-family: "Times New Roman", serif;
   letter-spacing: 0.05em;
 }
 
@@ -36,7 +35,7 @@
   outline: none;
   width: 100%;
   color: #374151;
-  border : none;
+  border: none;
 }
 
 .user-section {
@@ -71,7 +70,7 @@
 .chevron-icon {
   font-size: 0.875rem;
   color: #374151;
-} 
+}
 
 .logout-icon {
   margin-left: 12px;
@@ -91,7 +90,7 @@
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   min-width: 160px;
   z-index: 100;
   padding: 8px 0;

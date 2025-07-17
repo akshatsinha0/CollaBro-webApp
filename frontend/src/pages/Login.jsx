@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import sideImage from '../assets/signin&signupformsideimage.png';
-import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from 'lucide-react';
-import './Login.css';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import sideImage from "../assets/signin&signupformsideimage.png";
+import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from "lucide-react";
+import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -15,11 +15,13 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
-      const hasCompletedOnboarding = localStorage.getItem('onboardingCompleted');
+      const hasCompletedOnboarding = localStorage.getItem(
+        "onboardingCompleted",
+      );
       if (hasCompletedOnboarding) {
-        navigate('/home');
+        navigate("/home");
       } else {
-        navigate('/onboarding/basic-info');
+        navigate("/onboarding/basic-info");
       }
       setIsLoading(false);
     }, 1000);
@@ -28,7 +30,7 @@ const Login = () => {
   const handleSocialLogin = (provider) => {
     setIsLoading(true);
     setTimeout(() => {
-      navigate('/onboarding/basic-info');
+      navigate("/onboarding/basic-info");
       setIsLoading(false);
     }, 1000);
   };
@@ -63,7 +65,7 @@ const Login = () => {
 
               <div className="form-group password-group">
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
@@ -74,7 +76,7 @@ const Login = () => {
                   type="button"
                   className="password-toggle-button"
                   onClick={togglePasswordVisibility}
-                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -88,10 +90,10 @@ const Login = () => {
 
               <button
                 type="submit"
-                className={`login-button ${isLoading ? 'loading' : ''}`}
+                className={`login-button ${isLoading ? "loading" : ""}`}
                 disabled={isLoading}
               >
-                {isLoading ? 'SIGNING IN...' : 'SIGN IN'}
+                {isLoading ? "SIGNING IN..." : "SIGN IN"}
               </button>
 
               <div className="alternate-login">or sign in with</div>
@@ -100,7 +102,7 @@ const Login = () => {
                 <button
                   type="button"
                   className="social-login-button github"
-                  onClick={() => handleSocialLogin('github')}
+                  onClick={() => handleSocialLogin("github")}
                   title="Sign in with GitHub"
                 >
                   <Github size={36} />
@@ -108,7 +110,7 @@ const Login = () => {
                 <button
                   type="button"
                   className="social-login-button linkedin"
-                  onClick={() => handleSocialLogin('linkedin')}
+                  onClick={() => handleSocialLogin("linkedin")}
                   title="Sign in with LinkedIn"
                 >
                   <Linkedin size={36} />
@@ -116,7 +118,7 @@ const Login = () => {
                 <button
                   type="button"
                   className="social-login-button google"
-                  onClick={() => handleSocialLogin('google')}
+                  onClick={() => handleSocialLogin("google")}
                   title="Sign in with Gmail"
                 >
                   <Mail size={36} />
@@ -126,7 +128,7 @@ const Login = () => {
           </div>
 
           <p className="signup-prompt">
-            New to CollaBro?{' '}
+            New to CollaBro?{" "}
             <Link to="/signup" className="signup-link">
               Sign Up
             </Link>
@@ -144,12 +146,14 @@ const Login = () => {
             className="login-image"
           />
           <p className="login-description">
-            A platform designed to foster collaborative innovation by bringing together individuals from diverse streams and domains to work on impactful projects.
+            A platform designed to foster collaborative innovation by bringing
+            together individuals from diverse streams and domains to work on
+            impactful projects.
           </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Login;

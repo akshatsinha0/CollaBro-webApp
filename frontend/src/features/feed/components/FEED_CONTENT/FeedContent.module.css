@@ -1,13 +1,13 @@
 .content {
-display: flex;
-flex-direction: column;
-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 .createPostContainer {
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 .feedItems {
-display: flex;
-flex-direction: column;
-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }

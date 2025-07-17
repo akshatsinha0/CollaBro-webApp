@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { User, MapPin, Building2 } from 'lucide-react'
-import './BasicInfo.css'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { User, MapPin, Building2 } from "lucide-react";
+import "./BasicInfo.css";
 
 const BasicInfo = () => {
-  const navigate = useNavigate()
-  const [fullName, setFullName] = useState('')
-  const [currentCity, setCurrentCity] = useState('')
-  const [organization, setOrganization] = useState('')
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState("");
+  const [currentCity, setCurrentCity] = useState("");
+  const [organization, setOrganization] = useState("");
 
   useEffect(() => {
     // Pre-fill if the user is gonna navigate back
-    const savedName = localStorage.getItem('onboard_fullName')
-    const savedCity = localStorage.getItem('onboard_currentCity')
-    const savedOrg  = localStorage.getItem('onboard_organization')
-    if (savedName) setFullName(savedName)
-    if (savedCity) setCurrentCity(savedCity)
-    if (savedOrg)  setOrganization(savedOrg)
-  }, [])
+    const savedName = localStorage.getItem("onboard_fullName");
+    const savedCity = localStorage.getItem("onboard_currentCity");
+    const savedOrg = localStorage.getItem("onboard_organization");
+    if (savedName) setFullName(savedName);
+    if (savedCity) setCurrentCity(savedCity);
+    if (savedOrg) setOrganization(savedOrg);
+  }, []);
 
   const handleContinue = (e) => {
-    e.preventDefault()
-    localStorage.setItem('onboard_fullName', fullName.trim())
-    localStorage.setItem('onboard_currentCity', currentCity.trim())
-    localStorage.setItem('onboard_organization', organization.trim())
-    navigate('/onboarding/category')
-  }
+    e.preventDefault();
+    localStorage.setItem("onboard_fullName", fullName.trim());
+    localStorage.setItem("onboard_currentCity", currentCity.trim());
+    localStorage.setItem("onboard_organization", organization.trim());
+    navigate("/onboarding/category");
+  };
 
   const isValid =
     fullName.trim().length > 0 &&
     currentCity.trim().length > 0 &&
-    organization.trim().length > 0
+    organization.trim().length > 0;
 
   return (
     <div className="onboarding-container">
@@ -94,7 +94,7 @@ const BasicInfo = () => {
             <div className="step-indicator">Step 1 of 4</div>
             <button
               type="submit"
-              className={`continue-button${!isValid ? ' disabled' : ''}`}
+              className={`continue-button${!isValid ? " disabled" : ""}`}
               disabled={!isValid}
             >
               Continue →
@@ -103,7 +103,7 @@ const BasicInfo = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BasicInfo
+export default BasicInfo;

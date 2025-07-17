@@ -1,20 +1,20 @@
 .container {
-display: flex;
-align-items: center;
-gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 .details {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .username {
-font-size: 0.875rem;
-font-weight: 600;
-color: #111827;
-margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
 }
 .location {
-font-size: 0.75rem;
-color: #6b7280;
-margin: 0;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
 }

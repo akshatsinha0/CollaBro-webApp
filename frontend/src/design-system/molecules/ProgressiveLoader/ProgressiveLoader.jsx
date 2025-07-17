@@ -29,7 +29,7 @@ const ProgressiveLoader = memo(
       );
     }
     return <div className={containerClasses}>{children}</div>;
-  }
+  },
 );
 ProgressiveLoader.displayName = "ProgressiveLoader";
 ProgressiveLoader.propTypes = {

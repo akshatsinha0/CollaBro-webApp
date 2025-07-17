@@ -1,1 +1,1 @@
-export { default } from './FeedErrorBoundary';
+export { default } from "./FeedErrorBoundary";

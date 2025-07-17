@@ -1,1 +1,1 @@
-export { default } from './FeedContent';
+export { default } from "./FeedContent";

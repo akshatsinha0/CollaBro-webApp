@@ -1,7 +1,9 @@
-@import url('https://fonts.cdnfonts.com/css/amazon-ember');
+@import url("https://fonts.cdnfonts.com/css/amazon-ember");
 
 :root {
-  font-family: 'Amazon Ember', 'Amazon Ember Cd RC', 'Amazon Ember Display', 'Amazon Ember Duospace', 'Amazon Ember Mono', 'Amazon Ember V2', sans-serif;
+  font-family:
+    "Amazon Ember", "Amazon Ember Cd RC", "Amazon Ember Display",
+    "Amazon Ember Duospace", "Amazon Ember Mono", "Amazon Ember V2", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -25,7 +27,9 @@ a:hover {
 }
 
 body {
-  font-family: 'Amazon Ember', 'Amazon Ember Cd RC', 'Amazon Ember Display', 'Amazon Ember Duospace', 'Amazon Ember Mono', 'Amazon Ember V2', sans-serif;
+  font-family:
+    "Amazon Ember", "Amazon Ember Cd RC", "Amazon Ember Display",
+    "Amazon Ember Duospace", "Amazon Ember Mono", "Amazon Ember V2", sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;

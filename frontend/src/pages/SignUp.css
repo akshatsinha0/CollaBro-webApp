@@ -1,4 +1,4 @@
-@import 'react-phone-input-2/lib/style.css';
+@import "react-phone-input-2/lib/style.css";
 
 .signup-container {
   min-height: 100vh;
@@ -8,20 +8,31 @@
   overflow: hidden;
 }
 .signup-container::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 150%;
   height: 150%;
-  background: linear-gradient(45deg, rgba(79,70,229,0.1), rgba(236,72,153,0.1), rgba(59,130,246,0.1));
+  background: linear-gradient(
+    45deg,
+    rgba(79, 70, 229, 0.1),
+    rgba(236, 72, 153, 0.1),
+    rgba(59, 130, 246, 0.1)
+  );
   animation: gradientBg 15s ease infinite;
   top: -25%;
   left: -25%;
   z-index: 0;
 }
 @keyframes gradientBg {
-  0%   { transform: rotate(0deg); }
-  50%  { transform: rotate(180deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .signup-form-container {
   flex: 1;
@@ -53,7 +64,7 @@
   height: 36px;
   width: 36px;
   color: #8b5cf6;
-  filter: drop-shadow(0 0 8px rgba(139,92,246,0.5));
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5));
   transition: transform 0.3s ease;
 }
 .logo-container:hover .logo-icon {
@@ -72,14 +83,20 @@
   background: linear-gradient(145deg, #0f172a, #1e293b);
   border-radius: 16px;
   padding: 32px;
-  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   animation: fadeIn 0.8s ease-out;
 }
 .signup-form-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 .signup-title {
   font-size: 1.75rem;
@@ -90,7 +107,7 @@
   position: relative;
 }
 .signup-title::after {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
   height: 3px;
@@ -111,8 +128,8 @@
   width: 100%;
   padding: 10px 14px;
   height: 46px;
-  background: rgba(31,41,55,0.8);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(31, 41, 55, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: #fff;
   font-size: 0.95rem;
@@ -125,7 +142,7 @@
 }
 .form-input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(139,92,246,0.3);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
   border-color: #8b5cf6;
   transform: translateY(-2px);
 }
@@ -165,7 +182,7 @@
 }
 .password-toggle-button:hover {
   color: #8b5cf6;
-  background: rgba(139,92,246,0.1);
+  background: rgba(139, 92, 246, 0.1);
   transform: translateY(-50%) scale(1.1);
 }
 .signup-button {
@@ -184,18 +201,23 @@
   transition: all 0.3s;
 }
 .signup-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.7s;
 }
 .signup-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(139,92,246,0.4);
+  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
 }
 .signup-button:hover::before {
   left: 100%;
@@ -213,12 +235,12 @@
 }
 .alternate-signup::before,
 .alternate-signup::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   width: 35%;
   height: 1px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 .alternate-signup::before {
   left: 0;
@@ -236,8 +258,8 @@
   width: 70px;
   height: 70px;
   border-radius: 12px;
-  background: rgba(31,41,55,0.9);
-  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(31, 41, 55, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -255,7 +277,7 @@
 }
 .social-login-button:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 .social-login-button:disabled {
   opacity: 0.6;
@@ -310,7 +332,9 @@
   object-fit: cover;
   margin-bottom: 24px;
   border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   transition: transform 0.5s;
   animation: fadeIn 1s ease-out 0.4s;
 }
@@ -323,22 +347,43 @@
   animation: fadeInUp 1s ease-out 0.6s;
 }
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
-
 
 .phone-container {
   position: relative;
@@ -352,17 +397,14 @@
   z-index: 999 !important;
 }
 
-
 .password-toggle-button {
   z-index: 1;
 }
-
 
 .phone-container.open .form-group,
 .phone-container.open .phone-dropdown {
   z-index: 999;
 }
-
 
 .react-tel-input .flag-dropdown {
   z-index: 999 !important;
@@ -383,7 +425,6 @@
   margin-bottom: 12px;
   text-align: left;
 }
-
 
 .password-group.error .form-input,
 .password-group.error .password-toggle-button {

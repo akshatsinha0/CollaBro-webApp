@@ -1,1 +1,1 @@
-export { default } from './ProgressiveLoader';
+export { default } from "./ProgressiveLoader";

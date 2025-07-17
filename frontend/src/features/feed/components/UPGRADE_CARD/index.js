@@ -1,1 +1,1 @@
-export { default } from './UpgradeCard';
+export { default } from "./UpgradeCard";

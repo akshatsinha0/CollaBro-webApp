@@ -1,1 +1,1 @@
-export { default } from './TrendingTopicsCard';
+export { default } from "./TrendingTopicsCard";

@@ -1,7 +1,7 @@
 .login-container .social-login-buttons .social-login-button {
-  display: inline-flex;      
-  width: 70px !important;    
-  height: 70px !important;   
+  display: inline-flex;
+  width: 70px !important;
+  height: 70px !important;
 }
 .login-container {
   min-height: 100vh;
@@ -11,13 +11,17 @@
   overflow: hidden;
 }
 
-
 .login-container::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 150%;
   height: 150%;
-  background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(79, 70, 229, 0.1), rgba(236, 72, 153, 0.1));
+  background: linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(79, 70, 229, 0.1),
+    rgba(236, 72, 153, 0.1)
+  );
   animation: gradientBg 15s ease infinite;
   top: -25%;
   left: -25%;
@@ -35,7 +39,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 .login-form-container {
   flex: 1;
@@ -105,15 +108,21 @@
   background: linear-gradient(145deg, #0f172a, #1e293b);
   border-radius: 16px;
   padding: 32px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   animation: fadeIn 0.8s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .login-form-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .login-title {
@@ -126,7 +135,7 @@
 }
 
 .login-title::after {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
   height: 3px;
@@ -145,7 +154,6 @@
   width: 100%;
   position: relative;
 }
-
 
 .password-group {
   position: relative;
@@ -166,7 +174,7 @@
 }
 
 .password-input {
-  padding-right: 45px; 
+  padding-right: 45px;
 }
 
 .form-input::placeholder {
@@ -180,7 +188,6 @@
   border-color: #3b82f6;
   transform: translateY(-2px);
 }
-
 
 .password-toggle-button {
   position: absolute;
@@ -246,13 +253,18 @@
 }
 
 .login-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.7s;
 }
 
@@ -280,7 +292,7 @@
 
 .alternate-login::before,
 .alternate-login::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   width: 35%;
@@ -304,11 +316,11 @@
 }
 
 .social-login-button {
-  width: 70px; 
-  height: 70px; 
-  border-radius: 16px; 
-  border: 2px solid rgba(255, 255, 255, 0.2); 
-  background-color: rgba(31, 41, 55, 0.9); 
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(31, 41, 55, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -319,13 +331,18 @@
 }
 
 .social-login-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -392,7 +409,6 @@
   text-decoration: underline;
 }
 
-
 .login-info-container {
   display: none;
 }
@@ -439,7 +455,9 @@
   object-fit: cover;
   margin-bottom: 24px;
   border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   transition: transform 0.5s ease;
   animation: fadeIn 1s ease-out 0.4s;
   animation-fill-mode: both;
@@ -455,7 +473,6 @@
   animation: fadeInUp 1s ease-out 0.6s;
   animation-fill-mode: both;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -499,24 +516,21 @@
   }
 }
 
-
 @media (max-width: 480px) {
   .social-login-buttons {
     gap: 16px;
   }
-  
+
   .social-login-button {
     width: 50px;
     height: 50px;
   }
 }
 
-
 .social-login-button:focus {
   outline: 2px solid rgba(59, 130, 246, 0.5);
   outline-offset: 2px;
 }
-
 
 .social-login-button:disabled {
   opacity: 0.6;
@@ -524,17 +538,14 @@
   transform: none;
 }
 
-
 .login-form-container {
-  padding-right: 0;  
+  padding-right: 0;
 }
 .login-info-container {
-  padding-left: 0;   
-  margin-left: -4px; 
+  padding-left: 0;
+  margin-left: -4px;
 }
-
 
 .login-image {
-  margin-left: -4px; 
+  margin-left: -4px;
 }
-

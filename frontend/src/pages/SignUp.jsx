@@ -1,57 +1,57 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
-import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from 'lucide-react'
-import './SignUp.css'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { Laptop, Github, Linkedin, Mail, Eye, EyeOff } from "lucide-react";
+import "./SignUp.css";
 
 const SignUp = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: ''
-  })
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirm, setShowConfirm] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-    if (error) setError('')
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (error) setError("");
+  };
 
   const handlePhoneChange = (value) => {
-    setFormData(prev => ({ ...prev, phone: value }))
-  }
+    setFormData((prev) => ({ ...prev, phone: value }));
+  };
 
-  const togglePassword = () => setShowPassword(v => !v)
-  const toggleConfirm  = () => setShowConfirm(v => !v)
+  const togglePassword = () => setShowPassword((v) => !v);
+  const toggleConfirm = () => setShowConfirm((v) => !v);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match')
-      return
+      setError("Passwords do not match");
+      return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
     setTimeout(() => {
-      navigate('/onboarding/basic-info')
-      setIsLoading(false)
-    }, 1000)
-  }
+      navigate("/onboarding/basic-info");
+      setIsLoading(false);
+    }, 1000);
+  };
 
   const handleSocialSignup = (provider) => {
-    setIsLoading(true)
+    setIsLoading(true);
     setTimeout(() => {
-      navigate('/onboarding/basic-info')
-      setIsLoading(false)
-    }, 1000)
-  }
+      navigate("/onboarding/basic-info");
+      setIsLoading(false);
+    }, 1000);
+  };
 
   return (
     <div className="signup-container">
@@ -92,12 +92,12 @@ const SignUp = () => {
 
               <div className="form-group">
                 <PhoneInput
-                  country={'us'}
+                  country={"us"}
                   value={formData.phone}
                   onChange={handlePhoneChange}
                   enableSearch
                   searchPlaceholder="Search country"
-                  preferredCountries={['us','gb','in']}
+                  preferredCountries={["us", "gb", "in"]}
                   placeholder="Phone Number"
                   inputClass="form-input phone-input"
                   buttonClass="phone-button"
@@ -108,7 +108,7 @@ const SignUp = () => {
 
               <div className="form-group password-group">
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
@@ -120,15 +120,15 @@ const SignUp = () => {
                   type="button"
                   onClick={togglePassword}
                   className="password-toggle-button"
-                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
-                  {showPassword ? <EyeOff size={18}/> : <Eye size={18}/>}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
 
               <div className="form-group password-group">
                 <input
-                  type={showConfirm ? 'text' : 'password'}
+                  type={showConfirm ? "text" : "password"}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
@@ -140,24 +140,20 @@ const SignUp = () => {
                   type="button"
                   onClick={toggleConfirm}
                   className="password-toggle-button"
-                  aria-label={showConfirm ? 'Hide password' : 'Show password'}
+                  aria-label={showConfirm ? "Hide password" : "Show password"}
                 >
-                  {showConfirm ? <EyeOff size={18}/> : <Eye size={18}/>}
+                  {showConfirm ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
 
-              {error && (
-                <div className="form-error">
-                  {error}
-                </div>
-              )}
+              {error && <div className="form-error">{error}</div>}
 
               <button
                 type="submit"
-                className={`signup-button ${isLoading ? 'loading' : ''}`}
+                className={`signup-button ${isLoading ? "loading" : ""}`}
                 disabled={isLoading}
               >
-                {isLoading ? 'SIGNING UP...' : 'SIGN UP'}
+                {isLoading ? "SIGNING UP..." : "SIGN UP"}
               </button>
 
               <div className="alternate-signup">or sign up with</div>
@@ -165,36 +161,36 @@ const SignUp = () => {
                 <button
                   type="button"
                   className="social-login-button github"
-                  onClick={() => handleSocialSignup('github')}
+                  onClick={() => handleSocialSignup("github")}
                   title="Sign in with GitHub"
                   disabled={isLoading}
                 >
-                  <Github size={36}/>
+                  <Github size={36} />
                 </button>
                 <button
                   type="button"
                   className="social-login-button linkedin"
-                  onClick={() => handleSocialSignup('linkedin')}
+                  onClick={() => handleSocialSignup("linkedin")}
                   title="Sign in with LinkedIn"
                   disabled={isLoading}
                 >
-                  <Linkedin size={36}/>
+                  <Linkedin size={36} />
                 </button>
                 <button
                   type="button"
                   className="social-login-button google"
-                  onClick={() => handleSocialSignup('google')}
+                  onClick={() => handleSocialSignup("google")}
                   title="Sign in with Gmail"
                   disabled={isLoading}
                 >
-                  <Mail size={36}/>
+                  <Mail size={36} />
                 </button>
               </div>
             </form>
           </div>
 
           <p className="login-prompt">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link to="/login" className="login-link">
               Sign In
             </Link>
@@ -208,13 +204,13 @@ const SignUp = () => {
           <img src="/signup.png" alt="Collaboration" className="signup-image" />
           <p className="signup-description">
             CollaBro connects innovators, developers, designers, and visionaries
-            to collaborate on projects that make a difference. Join our community
-            and start building something amazing.
+            to collaborate on projects that make a difference. Join our
+            community and start building something amazing.
           </p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;

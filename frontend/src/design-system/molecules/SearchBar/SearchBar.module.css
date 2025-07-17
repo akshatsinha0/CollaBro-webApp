@@ -1,15 +1,15 @@
 .container {
-position: relative;
-display: flex;
-align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 .icon {
-position: absolute;
-left: 0.75rem;
-color: #9ca3af;
-font-size: 0.875rem;
-z-index: 1;
+  position: absolute;
+  left: 0.75rem;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  z-index: 1;
 }
 .input {
-padding-left: 2.5rem;
+  padding-left: 2.5rem;
 }

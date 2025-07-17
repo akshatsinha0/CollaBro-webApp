@@ -1,1 +1,1 @@
-export { default } from './CommunitiesCard';
+export { default } from "./CommunitiesCard";

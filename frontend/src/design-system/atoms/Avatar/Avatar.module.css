@@ -1,46 +1,46 @@
 .avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: #60a5fa;
-    color: #ffffff;
-    font-weight: 600;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #60a5fa;
+  color: #ffffff;
+  font-weight: 600;
+  overflow: hidden;
 }
 
 .sm {
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
 }
 
 .md {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 0.875rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
 }
 
 .lg {
-    width: 4rem;
-    height: 4rem;
-    font-size: 1.125rem;
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.125rem;
 }
 
 .xl {
-    width: 6rem;
-    height: 6rem;
-    font-size: 1.5rem;
+  width: 6rem;
+  height: 6rem;
+  font-size: 1.5rem;
 }
 
 .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .initials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

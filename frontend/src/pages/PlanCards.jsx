@@ -1,28 +1,43 @@
-import { useState } from 'react';
-import './Planner.css';
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import "./Planner.css";
+import PropTypes from "prop-types";
 
 const PlanCards = ({ isAnnual }) => {
   const [activeCard, setActiveCard] = useState(0);
 
   const cardData = [
     {
-      title: 'Starters Plan',
-      price: 'Free',
-      buttonText: 'Your Plan Now',
-      features: ['Plan Advantage', 'Plan Advantage', 'Plan Advantage', 'Plan Advantage'],
+      title: "Starters Plan",
+      price: "Free",
+      buttonText: "Your Plan Now",
+      features: [
+        "Plan Advantage",
+        "Plan Advantage",
+        "Plan Advantage",
+        "Plan Advantage",
+      ],
     },
     {
-      title: 'Standard Plan',
-      price: `Rs.${isAnnual ? '54' : '60'}/month`,
-      buttonText: 'Get Started',
-      features: ['Plan Advantage', 'Plan Advantage', 'Plan Advantage', 'Plan Advantage'],
+      title: "Standard Plan",
+      price: `Rs.${isAnnual ? "54" : "60"}/month`,
+      buttonText: "Get Started",
+      features: [
+        "Plan Advantage",
+        "Plan Advantage",
+        "Plan Advantage",
+        "Plan Advantage",
+      ],
     },
     {
-      title: 'Ultimate Plan',
-      price: `Rs.${isAnnual ? '90' : '100'}/month`,
-      buttonText: 'Get Started',
-      features: ['Plan Advantage', 'Plan Advantage', 'Plan Advantage', 'Plan Advantage'],
+      title: "Ultimate Plan",
+      price: `Rs.${isAnnual ? "90" : "100"}/month`,
+      buttonText: "Get Started",
+      features: [
+        "Plan Advantage",
+        "Plan Advantage",
+        "Plan Advantage",
+        "Plan Advantage",
+      ],
     },
   ];
 
@@ -31,13 +46,13 @@ const PlanCards = ({ isAnnual }) => {
       {cardData.map((card, index) => (
         <div
           key={index}
-          className={`plan-card ${activeCard === index ? 'plan-card-active' : ''}`}
+          className={`plan-card ${activeCard === index ? "plan-card-active" : ""}`}
           onClick={() => setActiveCard(index)}
         >
           <h2 className="plan-title">{card.title}</h2>
           <p className="plan-price">{card.price}</p>
-          <button 
-            className={`plan-button ${activeCard === index ? 'plan-button-active' : 'plan-button-inactive'}`} 
+          <button
+            className={`plan-button ${activeCard === index ? "plan-button-active" : "plan-button-inactive"}`}
           >
             {card.buttonText}
           </button>
@@ -69,7 +84,7 @@ const PlanCards = ({ isAnnual }) => {
 };
 
 PlanCards.propTypes = {
-  isAnnual: PropTypes.bool.isRequired
+  isAnnual: PropTypes.bool.isRequired,
 };
 
 export default PlanCards;

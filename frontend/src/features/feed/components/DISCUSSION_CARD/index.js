@@ -1,1 +1,1 @@
-export { default } from './DiscussionCard';
+export { default } from "./DiscussionCard";
